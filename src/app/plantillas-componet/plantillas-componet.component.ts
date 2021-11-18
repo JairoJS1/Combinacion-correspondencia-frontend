@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Destinatario } from '../componentes-comunes/classes/Solicitud.class';
+import { Servicios } from '../componentes-comunes/services/servicios.service';
 
 @Component({
   selector: 'app-plantillas-componet',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlantillasComponetComponent implements OnInit {
 
-  constructor() { }
+  constructor( private services: Servicios,) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.services.getData<Destinatario[]>(this.services.BASE_URL_DEST, `obtener/destinatario/${1}`)
+    .toPromise().then(res => {
+     // this.addOrRemoveControlls(res, true);
+      //this.solicitudes = res;
+     // console.log(this.administradorForm);
+      //this.spinner.hide();
+      console.log(res)
+    }).catch();
   }
 
 }
