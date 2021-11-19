@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ComponenteDestinatariosComponent } from './componente-destinatarios/componente-destinatarios.component';
 import { PlantillasComponetComponent } from './plantillas-componet/plantillas-componet.component';
 
 const routes: Routes = [
-  { path: 'creacion', component: PlantillasComponetComponent}
+  { path: 'creacion', component: ComponenteDestinatariosComponent}
 ];
 
 @NgModule({
