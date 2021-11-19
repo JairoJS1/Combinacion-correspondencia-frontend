@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { Destinatario } from '../componentes-comunes/classes/Solicitud.class';
 import { Servicios } from '../componentes-comunes/services/servicios.service';
+import { PlantillasComponetComponent } from '../plantillas-componet/plantillas-componet.component';
 
 @Component({
   selector: 'app-componente-destinatarios',
@@ -9,7 +11,8 @@ import { Servicios } from '../componentes-comunes/services/servicios.service';
   styleUrls: ['./componente-destinatarios.component.scss']
 })
 export class ComponenteDestinatariosComponent implements OnInit {
-
+ 
+  
   isLinear = false;
   destinatarioForm: FormGroup;
   

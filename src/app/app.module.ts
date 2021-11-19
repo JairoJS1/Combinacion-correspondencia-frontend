@@ -11,11 +11,13 @@ import { PlantillasComponetComponent } from './plantillas-componet/plantillas-co
 import { Servicios } from './componentes-comunes/services/servicios.service';
 import { MaterialModule } from './componentes-comunes/utils/material-module';
 import { ComponenteDestinatariosComponent } from './componente-destinatarios/componente-destinatarios.component';
+import { EditarComponentComponent } from './editar-component/editar-component.component';
 @NgModule({
   declarations: [
     AppComponent,
     PlantillasComponetComponent,
-    ComponenteDestinatariosComponent
+    ComponenteDestinatariosComponent,
+    EditarComponentComponent
   ],
   imports: [
     BrowserModule,
