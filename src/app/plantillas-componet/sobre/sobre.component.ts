@@ -1,39 +1,41 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { Destinatario } from '../componentes-comunes/classes/Solicitud.class';
-import { Servicios } from '../componentes-comunes/services/servicios.service';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import * as moment from 'moment';
-import { Carta } from '../componentes-comunes/classes/Carta.class';
+import { Carta } from 'src/app/componentes-comunes/classes/Carta.class';
+import { Sobre } from 'src/app/componentes-comunes/classes/Sobre.class';
 
 @Component({
-  selector: 'app-plantillas-componet',
-  templateUrl: './plantillas-componet.component.html',
-  styleUrls: ['./plantillas-componet.component.scss']
+  selector: 'app-sobre',
+  templateUrl: './sobre.component.html',
+  styleUrls: ['./sobre.component.scss']
 })
-export class PlantillasComponetComponent implements OnInit {
+export class SobreComponent implements OnInit {
 
   @ViewChild('content') content?: ElementRef;
-  @Input('destinatario') destinatario?: Carta;
+  @Input('sobre') sobre?: Sobre;
   @Input('genOnInit') genOnInit = false;
+  
 
   private download: (() => void) | any;
   private finished?: () => void;
   private output?: Blob;
   private generated = false;
+  constructor() { }
+
 
   dia?: String;
   mes?: String;
   anio?: String;
-  constructor(private services: Servicios,) { }
-
   ngOnInit() {
     if (this.genOnInit) this.generar();
     moment.locale("es");
     this.dia = moment().format("D")
     this.mes = moment().format("MMMM");
     this.anio = moment().format("YYYY");
+  
   }
+
 
   async generar() {
 
@@ -59,7 +61,7 @@ export class PlantillasComponetComponent implements OnInit {
     const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
 
     await doc.addImage(img, 'png', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
-    doc.save('Carta.pdf');
+    doc.save('Sobre.pdf');
     this.download = () => {
       const blob = this.toBlob();
       var a = document.createElement("a") as HTMLAnchorElement;
@@ -67,7 +69,7 @@ export class PlantillasComponetComponent implements OnInit {
       a.classList.add('display-none');
       const url = window.URL.createObjectURL(blob);
       a.href = url;
-      a.download = `Carta.pdf`;
+      a.download = `Sobre.pdf`;
       a.click();
       window.URL.revokeObjectURL(url);
     }
@@ -78,8 +80,6 @@ export class PlantillasComponetComponent implements OnInit {
     if (this.finished) this.finished();
     // this.fontSizeInput();
   }
-
-
 
   descargar(): void {
     this.download();
@@ -94,7 +94,7 @@ export class PlantillasComponetComponent implements OnInit {
   }
 
   toFile(): File {
-    return new File([this.toBlob()], "Carta.pdf", { type: "application/pdf", lastModified: new Date().getDate(), endings: "native" });
+    return new File([this.toBlob()], "Sobre.pdf", { type: "application/pdf", lastModified: new Date().getDate(), endings: "native" });
   }
 
   toBlob(): Blob | any {
@@ -105,6 +105,5 @@ export class PlantillasComponetComponent implements OnInit {
   onFinished(callback: () => void) {
     this.finished = callback;
   }
-
 
 }

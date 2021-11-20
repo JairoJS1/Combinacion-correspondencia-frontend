@@ -51,7 +51,6 @@ export class EditarComponentComponent implements OnInit {
 
   public limpiar() {
     this.cartaForm.reset();
-    this.regresar();
   }
   public regresar() {
     this.services.forcedNavigate(['menu']);
@@ -118,6 +117,7 @@ export class EditarComponentComponent implements OnInit {
 
       });
       this.registroForm.generar();
+      this.limpiar();
     }, 1000)
   }
 
@@ -142,4 +142,6 @@ export class EditarComponentComponent implements OnInit {
       console.log(err);
     })
   }
+
+  
 }

@@ -82,5 +82,7 @@ export class Servicios {
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => this.router.navigate(comands, extras));
   }
 
-
+  public deletePersona(id: String): Observable<any> {
+    return this.http.delete(this.BASE_URL_DEST + "/eliminar/destinatario/" + id);
+  }
 }

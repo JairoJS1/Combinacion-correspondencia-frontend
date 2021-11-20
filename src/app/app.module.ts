@@ -12,12 +12,22 @@ import { Servicios } from './componentes-comunes/services/servicios.service';
 import { MaterialModule } from './componentes-comunes/utils/material-module';
 import { ComponenteDestinatariosComponent } from './componente-destinatarios/componente-destinatarios.component';
 import { EditarComponentComponent } from './editar-component/editar-component.component';
+import { SobreComponent } from './plantillas-componet/sobre/sobre.component';
+import { CrearSobreComponent } from './crear-sobre/crear-sobre.component';
+import { EditarDestinatarioComponent } from './editar-destinatario/editar-destinatario.component';
+import { MenuComponent } from './menu/menu.component';
+import { OpcionPlantillasComponent } from './plantillas-componet/opcion-plantillas/opcion-plantillas.component';
 @NgModule({
   declarations: [
     AppComponent,
     PlantillasComponetComponent,
     ComponenteDestinatariosComponent,
-    EditarComponentComponent
+    EditarComponentComponent,
+    SobreComponent,
+    CrearSobreComponent,
+    EditarDestinatarioComponent,
+    MenuComponent,
+    OpcionPlantillasComponent
   ],
   imports: [
     BrowserModule,

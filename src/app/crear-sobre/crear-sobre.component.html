@@ -1,32 +1,31 @@
-<app-plantillas-componet #registroForm [destinatario]="empleado" style="position: absolute;"></app-plantillas-componet>
+<app-sobre #registroForm [sobre]="empleado" style="position: absolute;"></app-sobre>
 <div>
   <div class="card-body">
-    <mat-card-title class="titulo">Carta</mat-card-title>
+    <mat-card-title class="titulo">Crear Sobre</mat-card-title>
     <button mat-raised-button type="button" color="primary" (click)="regresar()" class="btn-container mt-3">
       <mat-icon>arrow_back</mat-icon>
       Regresar
     </button>
     <mat-card class="margenTarjeta">
       <mat-horizontal-stepper labelPosition="bottom" #stepper [linear]="isLinear">
-        <mat-step [stepControl]="cartaForm">
-          <ng-template matStepLabel style="text-align: center;">Destinatarios</ng-template>
+        <mat-step [stepControl]="sobreForm">
+          <ng-template matStepLabel style="text-align: center;">Datos del Remitente</ng-template>
           <div class="row d-flex justify-content-center">
             <div class="col-sm-8">
-              <form [formGroup]="cartaForm">
+              <form [formGroup]="sobreForm">
 
                 <div class="row">
 
                   <div class="col">
-                    <mat-form-field>
-                      <mat-label>Cuerpo</mat-label>
-                      <textarea matInput formControlName="cuerpo" #obs ></textarea>
-                      <mat-hint align="end">{{obs.value.length}}</mat-hint>
-                    </mat-form-field>
+                    <mat-form-field appearance="standard">
+                        <mat-label>Nombre Completo</mat-label>
+                        <input matInput formControlName="nombreRemitente">
+                      </mat-form-field>
                   </div>
                   <div class="col">
                     <mat-form-field appearance="standard">
-                      <mat-label>Nombre del Remitente</mat-label>
-                      <input matInput formControlName="remitente">
+                      <mat-label>Dirección</mat-label>
+                      <input matInput formControlName="direccionRemitente">
                     </mat-form-field>
                   </div>
                 </div>
@@ -34,19 +33,19 @@
                   <div class="col">
                     <mat-form-field appearance="standard">
                       <mat-label>Puesto</mat-label>
-                      <input matInput formControlName="puesto">
+                      <input matInput formControlName="puestoRemitente">
                     </mat-form-field>
                   </div>
                   <div class="col">
                     <mat-form-field appearance="standard">
-                      <mat-label>Número de Teléfono</mat-label>
-                      <input matInput autocomplete="off" type="number" maxlength="8" formControlName="telefono">
-                    </mat-form-field>
+                        <mat-label>País</mat-label>
+                        <input matInput formControlName="paisRemitente">
+                      </mat-form-field>
                   </div>
 
                 </div>
                 <button mat-raised-button color="primary" type="button" data-toggle="modal" data-target="#elegirDest"
-                  class="btn-container mr-2" [disabled]="cartaForm.invalid">
+                  class="btn-container mr-2" [disabled]="sobreForm.invalid">
                   <mat-icon>
                     edit
                   </mat-icon>
@@ -110,17 +109,29 @@
                       </td>
                     </ng-container>
                     <ng-container matColumnDef="nombreDestinatario">
-                      <th mat-header-cell *matHeaderCellDef class="header-table "> Nombre </th>
+                      <th mat-header-cell *matHeaderCellDef class="header-table"> Nombre </th>
                       <td mat-cell *matCellDef="let element">
                         {{element.nombreDestinatario}}
                       </td>
                     </ng-container>
                     <ng-container matColumnDef="apellidoDestinatario">
-                      <th mat-header-cell *matHeaderCellDef class="header-table end"> Apellido </th>
+                      <th mat-header-cell *matHeaderCellDef class="header-table"> Apellido </th>
                       <td mat-cell *matCellDef="let element">
                         {{element.apellidoDestinatario}}
                       </td>
                     </ng-container>
+                    <ng-container matColumnDef="direccionDestinatario">
+                        <th mat-header-cell *matHeaderCellDef class="header-table"> Dirección </th>
+                        <td mat-cell *matCellDef="let element">
+                          {{element.direccionDestinatario}}
+                        </td>
+                      </ng-container>
+                      <ng-container matColumnDef="numeroDestinatario">
+                        <th mat-header-cell *matHeaderCellDef class="header-table end"> Telefono </th>
+                        <td mat-cell *matCellDef="let element">
+                          {{element.numeroDestinatario}}
+                        </td>
+                      </ng-container>
                     <tr mat-header-row *matHeaderRowDef="headerColumnNames"></tr>
                     <tr mat-row *matRowDef="let row; columns: headerColumnNames"></tr>
                   </table>
@@ -132,7 +143,7 @@
       </div>
       <div class="modal-footer">
         <button mat-raised-button type="button" color="warn" class="btn-container btn-add"
-          style="margin: 7px !important;" data-dismiss="modal" (click)="limpiar()">
+          style="margin: 7px !important;" data-dismiss="modal">
           <mat-icon>clear</mat-icon>
           Cancelar
         </button>
@@ -141,7 +152,7 @@
           <mat-icon>
             save
           </mat-icon>
-          Generar Carta
+          Generar Sobre
         </button>
       </div>
     </div>
