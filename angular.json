@@ -36,7 +36,9 @@
             "styles": [
               
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/assets/sass/material-dashboard.scss",
               "src/assets/sass/styles.scss",
+              "node_modules/sweetalert2/src/sweetalert2.scss",
               "src/styles.scss"
             ],
             "scripts": [

@@ -17,6 +17,8 @@ import { CrearSobreComponent } from './crear-sobre/crear-sobre.component';
 import { EditarDestinatarioComponent } from './editar-destinatario/editar-destinatario.component';
 import { MenuComponent } from './menu/menu.component';
 import { OpcionPlantillasComponent } from './plantillas-componet/opcion-plantillas/opcion-plantillas.component';
+import { CrearInvitacionComponent } from './crear-invitacion/crear-invitacion.component';
+import { InvitacionComponent } from './plantillas-componet/invitacion/invitacion.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +29,9 @@ import { OpcionPlantillasComponent } from './plantillas-componet/opcion-plantill
     CrearSobreComponent,
     EditarDestinatarioComponent,
     MenuComponent,
-    OpcionPlantillasComponent
+    OpcionPlantillasComponent,
+    CrearInvitacionComponent,
+    InvitacionComponent
   ],
   imports: [
     BrowserModule,
