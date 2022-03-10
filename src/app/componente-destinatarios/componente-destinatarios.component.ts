@@ -11,11 +11,11 @@ import { PlantillasComponetComponent } from '../plantillas-componet/plantillas-c
   styleUrls: ['./componente-destinatarios.component.scss']
 })
 export class ComponenteDestinatariosComponent implements OnInit {
- 
-  
+
+
   isLinear = false;
   destinatarioForm: FormGroup;
-  
+
   constructor(
     private fb: FormBuilder,
     private services: Servicios
@@ -28,7 +28,7 @@ export class ComponenteDestinatariosComponent implements OnInit {
       direccionDestinatario: ["", Validators.required],
       numeroDestinatario: ["", Validators.required],
     });
-   }
+  }
 
   ngOnInit(): void {
   }
@@ -39,60 +39,60 @@ export class ComponenteDestinatariosComponent implements OnInit {
     this.regresar();
   }
 
-  
+
   async guardar() {
-   try {
-    await this.services.postData(this.services.BASE_URL_DEST, 'destinatario/crear', this.destinatarioForm.value).toPromise();
-    
-    return Swal.fire({
-      title: 'Desea ingresar otro Destinatario',
-      icon: 'question',
-      showDenyButton: true,
-      confirmButtonColor: "#1369A0",
-      confirmButtonText: "Si",
-      denyButtonText: "No",
-      denyButtonColor: "#F44336",
-      allowEscapeKey: false,
-      allowOutsideClick: false
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.destinatarioForm.reset();
-        Swal.fire({
-          titleText: `Se ha almacenado la información con éxito.`,
-          icon: 'success',
-          showCloseButton: true,
-          showConfirmButton: false
-        });
-      }
-      else{
-        this.regresar();
-        Swal.fire({
-          titleText: `Se ha almacenado la información con éxito.`,
-          icon: 'success',
-          showCloseButton: true,
-          showConfirmButton: false
-        });
-      }
-    })
-   } catch (error) {
-    console.error(error);
-    return Swal.fire({
-      titleText: `Error al registrar datos, por favor intente en otro momento.`,
-      icon: 'error',
-      showCloseButton: true,
-      showConfirmButton: false
-    });
+    try {
+      await this.services.postData(this.services.BASE_URL_DEST, 'destinatario/crear', this.destinatarioForm.value).toPromise();
+
+      return Swal.fire({
+        title: 'Desea ingresar otro Destinatario',
+        icon: 'question',
+        showDenyButton: true,
+        confirmButtonColor: "#1369A0",
+        confirmButtonText: "Si",
+        denyButtonText: "No",
+        denyButtonColor: "#F44336",
+        allowEscapeKey: false,
+        allowOutsideClick: false
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.destinatarioForm.reset();
+          Swal.fire({
+            titleText: `Se ha almacenado la información con éxito.`,
+            icon: 'success',
+            showCloseButton: true,
+            showConfirmButton: false
+          });
+        }
+        else {
+          this.regresar();
+          Swal.fire({
+            titleText: `Se ha almacenado la información con éxito.`,
+            icon: 'success',
+            showCloseButton: true,
+            showConfirmButton: false
+          });
+        }
+      })
+    } catch (error) {
+      console.error(error);
+      return Swal.fire({
+        titleText: `Error al registrar datos, por favor intente en otro momento.`,
+        icon: 'error',
+        showCloseButton: true,
+        showConfirmButton: false
+      });
 
 
-    
-   }
-    
-     
-    
+
+    }
+
+
+
   }
 
   public regresar() {
     this.services.forcedNavigate(['menu']);
   }
-  
+
 }
