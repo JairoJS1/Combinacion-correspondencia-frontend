@@ -7,14 +7,13 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
-    "build": "ng build",
-    "lint": "ng lint",
+    "start": "node serve examen-final-front",
+    "build": "ng build examen-final-front",
+    "lint": "ng lint examen-final-front",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "e2e": "ng e2e",
-    "lite": "lite-server",
-    "postinstall": "ng build --prod"
+    "test": "ng test examen-final-front",
+    "e2e": "ng e2e examen-final-front",
+    "postinstall": "ng build examen-final-front --aot --prod"
   },
   "private": true,
   "dependencies": {
